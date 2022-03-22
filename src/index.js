@@ -1,10 +1,10 @@
-import fs from "fs"
-import { Client } from "@notionhq/client";
-import { config } from "./config.js";
-import { NotionToMarkdown } from "notion-to-md";
+const { fs } = require("fs");
+const { Client } = require("@notionhq/client");
+const { NotionToMarkdown } = require("notion-to-md");
 
+const authToken = process.env.NOTION_KEY;
 
-const notion = new Client({ auth: config.authToken });
+const notion = new Client({ auth: authToken });
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
 const getAllPages = async (databaseId) => {
@@ -36,5 +36,10 @@ const convertToMd = async (client, pageList) => {
   return;
 };
 
-const pageList = await getAllPages(config.databaseId);
-const resp = await convertToMd(n2m, pageList);
+module.exports = async function download(url, options) {
+  console.log(url);
+  console.log(options);
+
+  // const pageList = await getAllPages(url);
+  // const resp = await convertToMd(n2m, pageList);
+};

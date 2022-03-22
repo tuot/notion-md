@@ -1,11 +1,14 @@
 {
-    "name": "notion2md",
-    "type": "module",
+    "name": "notion-md",
     "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
+    "description": "Convert notion page to markdown file and download it.",
+    "main": "src/cli.js",
+    "bin": {
+        "notion-md": "src/cli.js"
+    },
     "dependencies": {
         "@notionhq/client": "^1.0.1",
+        "commander": "^9.1.0",
         "notion-to-md": "^2.3.2"
     }
 }
