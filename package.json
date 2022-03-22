@@ -5,6 +5,7 @@
     "description": "",
     "main": "index.js",
     "dependencies": {
-      "@notionhq/client": "^1.0.1"
-    } 
-  }
+        "@notionhq/client": "^1.0.1",
+        "notion-to-md": "^2.3.2"
+    }
+}
