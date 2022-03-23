@@ -88,6 +88,10 @@ const convertToMd = async (client, pageList, savePath) => {
 };
 
 module.exports = function download(url, options) {
+  if (!authToken) {
+    console.error("Please set NOTION_TOKEN as environment variable");
+    process.exit(1);
+  }
   const pageList = getAllPages(url);
   const currentPath = process.cwd();
   let savePath = options.path
