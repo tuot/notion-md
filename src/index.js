@@ -81,18 +81,19 @@ const convertToMd = async (client, pageList, savePath) => {
 
     pagePath = path.join(savePath, pageTitle);
     fs.writeFile(pagePath, mdString, (err) => {
-      console.error(err);
+      if (err) {
+        console.error(err);
+      }
     });
   }
-  return;
 };
 
-module.exports = function download(url, options) {
+module.exports = async function download(url, options) {
   if (!authToken) {
     console.error("Please set NOTION_TOKEN as environment variable");
     process.exit(1);
   }
-  const pageList = getAllPages(url);
+  const pageList = await getAllPages(url);
   const currentPath = process.cwd();
   let savePath = options.path
     ? options.path
@@ -109,6 +110,6 @@ module.exports = function download(url, options) {
     fs.mkdirSync(savePath);
   }
 
-  convertToMd(n2m, pageList, savePath);
+  await convertToMd(n2m, pageList, savePath);
   console.info(`Successfully converted to markdown in ${savePath}.`);
 };
