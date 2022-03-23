@@ -1,11 +1,16 @@
 {
     "name": "notion-md",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Convert notion page to markdown file and download it.",
     "main": "src/cli.js",
     "bin": {
         "notion-md": "src/cli.js"
     },
+    "keywords": [
+        "notion",
+        "markdown",
+        "notion-md"
+    ],
     "dependencies": {
         "@notionhq/client": "^1.0.1",
         "commander": "^9.1.0",
