@@ -1,7 +1,8 @@
 {
     "name": "notion-md",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Convert notion page to markdown file and download it.",
+    "license": "MIT",
     "main": "src/cli.js",
     "bin": {
         "notion-md": "src/cli.js"

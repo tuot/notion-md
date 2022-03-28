@@ -1,5 +1,7 @@
 # notion-md
 
+> Convert and download notion pages command tool.
+
 ## Notion token
  - Create a [notion token](https://www.notion.so/my-integrations)
  - Then save token as your os environment variable
