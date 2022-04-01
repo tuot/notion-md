@@ -1,7 +1,9 @@
 {
     "name": "notion-md",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "Convert notion page to markdown file and download it.",
+    "author": "Levi",
+    "repository": "github:tuot/notion-md",
     "license": "MIT",
     "main": "src/cli.js",
     "bin": {
