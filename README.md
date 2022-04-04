@@ -4,6 +4,7 @@
 
 ## Notion token
  - Create a [notion token](https://www.notion.so/my-integrations)
+ - Share your page to the integration
  - Then save token as your os environment variable
 
     ```bash

@@ -19,11 +19,11 @@ function getUUIDFromString(str) {
   let uuidStr;
   if (isUrl) {
     url_parse = str.split("?")[0].split("/");
-    if (url_parse.length !== 5) {
+    if (url_parse.length < 4) {
       console.error("It is not a valid notion url");
       process.exit(1);
     }
-    uuidStr = url_parse[4];
+    uuidStr = url_parse.slice(-1)[0];
   } else {
     uuidStr = str;
   }
@@ -74,11 +74,19 @@ const convertToMd = async (client, pageList, savePath) => {
   for (let i = 0; i < pageList.length; i++) {
     const page = pageList[i];
     const pageId = page.id;
-    const pageTitle = page.properties.title.title[0].plain_text + ".md";
+    let pageTitle = "";
+    Object.values(page.properties).forEach((item) => {
+      if (item.type === "title") {
+        pageTitle = item.title[0].plain_text + ".md";
+      }
+    });
 
     const mdBlocks = await client.pageToMarkdown(pageId);
     const mdString = client.toMarkdownString(mdBlocks);
 
+    if (pageTitle === "") {
+      pageTitle = mdBlocks[0].parent.split(" ").slice(-1)[0] + ".md";
+    }
     pagePath = path.join(savePath, pageTitle);
     fs.writeFile(pagePath, mdString, (err) => {
       if (err) {
